@@ -1,0 +1,1258 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>B.N.M. Krishna | Portfolio</title>
+
+    <style>
+        /* =========================
+           BASIC RESET
+        ========================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b1120;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        section {
+            padding: 90px 8%;
+            scroll-margin-top: 80px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* =========================
+           NAVIGATION BAR
+        ========================== */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 18px 8%;
+
+            background: rgba(11, 17, 32, 0.95);
+            backdrop-filter: blur(12px);
+
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #38e8a6;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #38e8a6;
+        }
+
+        /* =========================
+           HERO
+        ========================== */
+
+        #home {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+
+            background:
+                radial-gradient(circle at top right,
+                rgba(56,232,166,0.15),
+                transparent 35%),
+                #0b1120;
+        }
+
+        .hero {
+            max-width: 1200px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 7vw, 80px);
+            line-height: 1.05;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #38e8a6;
+        }
+
+        .hero h2 {
+            font-size: 25px;
+            color: #cbd5e1;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            color: #94a3b8;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 13px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #38e8a6;
+            color: #071019;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(56,232,166,0.25);
+        }
+
+        .btn-outline {
+            border: 1px solid #38e8a6;
+            color: #38e8a6;
+        }
+
+        .btn-outline:hover {
+            background: #38e8a6;
+            color: #071019;
+        }
+
+        /* PROFILE IMAGE */
+
+        .profile-box {
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-box img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            border: 5px solid #38e8a6;
+
+            box-shadow:
+                0 0 40px rgba(56,232,166,0.25);
+        }
+
+        /* =========================
+           SECTION TITLES
+        ========================== */
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .section-title span {
+            color: #38e8a6;
+        }
+
+        .section-title p {
+            color: #94a3b8;
+        }
+
+        /* =========================
+           ABOUT
+        ========================== */
+
+        .about-content {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            color: #cbd5e1;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        /* =========================
+           EDUCATION
+        ========================== */
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .education-card {
+            background: #111827;
+            padding: 30px;
+            border-radius: 15px;
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            transition: 0.3s;
+        }
+
+        .education-card:hover {
+            transform: translateY(-8px);
+            border-color: #38e8a6;
+        }
+
+        .education-card h3 {
+            color: #38e8a6;
+            margin-bottom: 10px;
+        }
+
+        .education-card h4 {
+            margin-bottom: 10px;
+        }
+
+        .education-card p {
+            color: #94a3b8;
+        }
+
+        /* =========================
+           SKILLS
+        ========================== */
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .skill-box {
+            background: #111827;
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .skill-box h3 {
+            margin-bottom: 20px;
+            color: #38e8a6;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill {
+            padding: 10px 17px;
+            border-radius: 20px;
+            background: #1e293b;
+            color: #ffffff;
+            border: 1px solid rgba(56,232,166,0.2);
+        }
+
+        /* =========================
+           CERTIFICATES
+        ========================== */
+
+        .certificate-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .certificate-card {
+            background: #111827;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: 0.3s;
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-8px);
+            border-color: #38e8a6;
+        }
+
+        .certificate-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            background: #1e293b;
+        }
+
+        .certificate-content {
+            padding: 22px;
+        }
+
+        .certificate-content h3 {
+            color: #38e8a6;
+            margin-bottom: 8px;
+        }
+
+        .certificate-content p {
+            color: #94a3b8;
+        }
+
+        /* =========================
+           PROJECTS
+        ========================== */
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .project-card {
+            background: #111827;
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: #38e8a6;
+        }
+
+        .project-card h3 {
+            color: #38e8a6;
+            margin-bottom: 12px;
+        }
+
+        .project-card p {
+            color: #94a3b8;
+        }
+
+        /* =========================
+           EXPERIENCE
+        ========================== */
+
+        .experience-box {
+            max-width: 850px;
+            margin: auto;
+            background: #111827;
+            padding: 35px;
+            border-left: 4px solid #38e8a6;
+            border-radius: 10px;
+        }
+
+        .experience-box h3 {
+            color: #38e8a6;
+            margin-bottom: 10px;
+        }
+
+        .experience-box p {
+            color: #94a3b8;
+        }
+
+        /* =========================
+           CONTACT
+        ========================== */
+
+        .contact-container {
+            max-width: 800px;
+            margin: auto;
+
+            display: grid;
+            gap: 18px;
+        }
+
+        .contact-item {
+            background: #111827;
+            padding: 22px;
+            border-radius: 10px;
+            text-align: center;
+
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .contact-item strong {
+            color: #38e8a6;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #070c16;
+            color: #64748b;
+        }
+
+        footer span {
+            color: #38e8a6;
+        }
+
+        /* =========================
+           RESPONSIVE DESIGN
+        ========================== */
+
+        @media (max-width: 900px) {
+
+            nav {
+                padding: 15px 5%;
+            }
+
+            .nav-links {
+                gap: 14px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .profile-box {
+                order: -1;
+            }
+
+            .education-grid,
+            .certificate-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 650px) {
+
+            section {
+                padding: 70px 5%;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            #home {
+                padding-top: 150px;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .profile-box img {
+                width: 220px;
+                height: 220px;
+            }
+
+            .education-grid,
+            .certificate-grid,
+            .projects-grid,
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- =========================
+     NAVIGATION
+========================== -->
+
+<nav>
+
+    <div class="logo">
+        BNMK
+    </div>
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="#home">Home</a>
+        </li>
+
+        <li>
+            <a href="#about">About</a>
+        </li>
+
+        <li>
+            <a href="#education">Education</a>
+        </li>
+
+        <li>
+            <a href="#skills">Skills</a>
+        </li>
+
+        <li>
+            <a href="#certificates">Certificates</a>
+        </li>
+
+        <li>
+            <a href="#projects">Projects</a>
+        </li>
+
+        <li>
+            <a href="#contact">Contact</a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- =========================
+     HOME
+========================== -->
+
+<section id="home">
+
+    <div class="hero">
+
+        <div>
+
+            <h1>
+                Hi, I'm <span>Krishna</span>
+            </h1>
+
+            <h2>
+                Student | Web Developer | Creative Editor
+            </h2>
+
+            <p>
+                Welcome to my personal portfolio. I am interested in
+                technology, web development, editing and learning new
+                skills.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#about" class="btn btn-primary">
+                    Explore My Portfolio
+                </a>
+
+                <a href="#contact" class="btn btn-outline">
+                    Contact Me
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="profile-box">
+
+            <!-- Put your photo in the same folder and name it profile.jpg -->
+
+            <img
+                src="profile.jpg"
+                alt="B.N.M. Krishna"
+            >
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ABOUT
+========================== -->
+
+<section id="about">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+                About <span>Me</span>
+            </h2>
+
+            <p>
+                Get to know me
+            </p>
+
+        </div>
+
+
+        <div class="about-content">
+
+            <p>
+                Hello! I am <strong>B.N.M. Krishna</strong>, a student
+                from Guntur, Andhra Pradesh.
+            </p>
+
+            <p>
+                I am interested in web development, programming,
+                editing and technology. I enjoy learning new concepts
+                and working on creative and technical projects.
+            </p>
+
+            <p>
+                My goal is to continuously improve my technical skills
+                and build useful projects that provide real-world value.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     EDUCATION
+========================== -->
+
+<section id="education">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+                My <span>Education</span>
+            </h2>
+
+            <p>
+                Academic background
+            </p>
+
+        </div>
+
+
+        <div class="education-grid">
+
+
+            <div class="education-card">
+
+                <h3>Undergraduate</h3>
+
+                <h4>
+                    Vignan University
+                </h4>
+
+                <p>
+                    Andhra Pradesh, India
+                </p>
+
+                <p>
+                    Undergraduate Student
+                </p>
+
+            </div>
+
+
+            <div class="education-card">
+
+                <h3>Intermediate</h3>
+
+                <h4>
+                    Sri Chaitanya
+                </h4>
+
+                <p>
+                    Guntur, Andhra Pradesh
+                </p>
+
+                <p>
+                    Completed: May 2023
+                </p>
+
+                <p>
+                    Percentage: 58%
+                </p>
+
+            </div>
+
+
+            <div class="education-card">
+
+                <h3>SSC</h3>
+
+                <h4>
+                    Oxford High School
+                </h4>
+
+                <p>
+                    Guntur, Andhra Pradesh
+                </p>
+
+                <p>
+                    Completed: June 2021
+                </p>
+
+                <p>
+                    Percentage: 90%
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SKILLS
+========================== -->
+
+<section id="skills">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+                My <span>Skills</span>
+            </h2>
+
+            <p>
+                Technical and personal skills
+            </p>
+
+        </div>
+
+
+        <div class="skills-container">
+
+
+            <div class="skill-box">
+
+                <h3>
+                    Technical Skills
+                </h3>
+
+                <div class="skills-list">
+
+                    <div class="skill">
+                        HTML
+                    </div>
+
+                    <div class="skill">
+                        CSS
+                    </div>
+
+                    <div class="skill">
+                        JavaScript
+                    </div>
+
+                    <div class="skill">
+                        Java
+                    </div>
+
+                    <div class="skill">
+                        Python
+                    </div>
+
+                    <div class="skill">
+                        MS Excel
+                    </div>
+
+                    <div class="skill">
+                        Editing
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="skill-box">
+
+                <h3>
+                    Soft Skills
+                </h3>
+
+                <div class="skills-list">
+
+                    <div class="skill">
+                        Communication
+                    </div>
+
+                    <div class="skill">
+                        Teamwork
+                    </div>
+
+                    <div class="skill">
+                        Problem Solving
+                    </div>
+
+                    <div class="skill">
+                        Creativity
+                    </div>
+
+                    <div class="skill">
+                        Time Management
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CERTIFICATES
+========================== -->
+
+<section id="certificates">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+                My <span>Certificates</span>
+            </h2>
+
+            <p>
+                Certifications and achievements
+            </p>
+
+        </div>
+
+
+        <div class="certificate-grid">
+
+
+            <!-- JAVA CERTIFICATE -->
+
+            <div class="certificate-card">
+
+                <img
+                    src="java-certificate.jpg"
+                    alt="Java Merit Certificate"
+                >
+
+                <div class="certificate-content">
+
+                    <h3>
+                        Java Programming
+                    </h3>
+
+                    <p>
+                        Merit Certificate in Java Programming.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- PYTHON CERTIFICATE -->
+
+            <div class="certificate-card">
+
+                <img
+                    src="python-certificate.jpg"
+                    alt="Python Merit Certificate"
+                >
+
+                <div class="certificate-content">
+
+                    <h3>
+                        Python Programming
+                    </h3>
+
+                    <p>
+                        Merit Certificate in Python Programming.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- EXCEL CERTIFICATE -->
+
+            <div class="certificate-card">
+
+                <img
+                    src="excel-certificate.jpg"
+                    alt="MS Excel Certificate"
+                >
+
+                <div class="certificate-content">
+
+                    <h3>
+                        MS Excel
+                    </h3>
+
+                    <p>
+                        Certificate in Introduction to MS Excel.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PROJECTS
+========================== -->
+
+<section id="projects">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+                My <span>Projects</span>
+            </h2>
+
+            <p>
+                Some of my technical work
+            </p>
+
+        </div>
+
+
+        <div class="projects-grid">
+
+
+            <div class="project-card">
+
+                <h3>
+                    Accident Detection System
+                </h3>
+
+                <p>
+                    A technical project focused on detecting accidents
+                    and providing useful information through an embedded
+                    system.
+                </p>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <h3>
+                    Social Media Ad Prediction
+                </h3>
+
+                <p>
+                    A machine learning project using a decision tree
+                    classifier to predict whether a user is likely to
+                    purchase a product after viewing a social media
+                    advertisement.
+                </p>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <h3>
+                    Personal Portfolio
+                </h3>
+
+                <p>
+                    A responsive personal portfolio website created
+                    using HTML, CSS and JavaScript to showcase my
+                    education, skills, projects and certificates.
+                </p>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <h3>
+                    Web Development Projects
+                </h3>
+
+                <p>
+                    Various practice projects created to improve my
+                    understanding of HTML, CSS, JavaScript and modern
+                    web development.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     EXPERIENCE / STRENGTHS
+========================== -->
+
+<section id="experience">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+                My <span>Strengths</span>
+            </h2>
+
+            <p>
+                What I bring to a team
+            </p>
+
+        </div>
+
+
+        <div class="experience-box">
+
+            <h3>
+                Continuous Learning
+            </h3>
+
+            <p>
+                I enjoy learning new technologies and improving my
+                programming and creative skills through projects and
+                practical experience.
+            </p>
+
+            <br>
+
+            <h3>
+                Teamwork
+            </h3>
+
+            <p>
+                I can work effectively with others, communicate ideas
+                clearly and contribute to team projects.
+            </p>
+
+            <br>
+
+            <h3>
+                Creativity
+            </h3>
+
+            <p>
+                I am interested in combining technical knowledge with
+                creative editing and design.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONTACT
+========================== -->
+
+<section id="contact">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+                Contact <span>Me</span>
+            </h2>
+
+            <p>
+                Let's connect
+            </p>
+
+        </div>
+
+
+        <div class="contact-container">
+
+
+            <div class="contact-item">
+
+                <strong>
+                    Name
+                </strong>
+
+                <p>
+                    B.N.M. Krishna
+                </p>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <strong>
+                    Location
+                </strong>
+
+                <p>
+                    Guntur, Andhra Pradesh, India
+                </p>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <strong>
+                    Email
+                </strong>
+
+                <p>
+                    Add your email address here
+                </p>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <strong>
+                    Phone
+                </strong>
+
+                <p>
+                    Add your phone number here
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================== -->
+
+<footer>
+
+    <p>
+        © 2026 <span>B.N.M. Krishna</span>.
+        All Rights Reserved.
+    </p>
+
+</footer>
+
+
+<!-- =========================
+     SIMPLE JAVASCRIPT
+========================== -->
+
+<script>
+
+    // Smooth navigation
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+
+        link.addEventListener("click", function(event) {
+
+            event.preventDefault();
+
+            const section =
+                document.querySelector(this.getAttribute("href"));
+
+            if (section) {
+
+                section.scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            }
+
+        });
+
+    });
+
+</script>
+
+</body>
+</html>
+```
+
